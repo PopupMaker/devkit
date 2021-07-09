@@ -1,0 +1,38 @@
+{
+	"name": "@popupmaker/devkit",
+	"version": "0.0.1",
+	"description": "## Stack",
+	"main": "",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/popupmaker/devkit.git"
+	},
+	"author": "",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/popupmaker/devkit/issues"
+	},
+	"homepage": "https://github.com/popupmaker/devkit#readme",
+	"scripts": {
+		"build": "npm run lerna:build",
+		"docker:down": "bash ./bin/docker-down.sh",
+		"docker:purge": "bash ./bin/docker-purge.sh",
+		"docker:up": "bash ./bin/docker-up.sh",
+		"docker:update": "bash ./bin/docker-update.sh",
+		"install:composer": "composer update --ignore-platform-reqs",
+		"install:packages": "npx lerna bootstrap",
+		"install:plugins": "bash ./bin/install-plugins.sh",
+		"lerna:build": "npx lerna run build",
+		"lerna:start": "npx lerna run start",
+		"setup": "run-p install:composer install:packages",
+		"start": "run-s setup docker:up lerna:start",
+		"watch": ""
+	},
+	"dependencies": {
+		"@code-atlantic/browserslist-config": "~1.0.1",
+		"@code-atlantic/eslint-plugin": "~0.0.15",
+		"@code-atlantic/stylelint-config": "~1.0.1",
+		"lerna": "^4.0.0",
+		"npm-run-all": "^4.1.5"
+	}
+}
