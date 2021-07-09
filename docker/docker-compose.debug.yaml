@@ -1,0 +1,22 @@
+---
+version: 3.8
+services:
+    wordpress:
+        build:
+            args:
+                XDEBUG_ENABLED: 1
+        environment:
+            # Set the XDEBUG_CONFIG as described here: https://xdebug.org/docs/remote
+            # Uses client_host for v3, and remote_host for v2 depending on PHP version.
+            XDEBUG_CONFIG: client_host=host.docker.internal remote_host=host.docker.internal
+
+    mailcatcher:
+        image: jeanberu/mailcatcher
+        ports:
+            - "1025:1025"
+            - "1080:1080"
+        networks:
+            - wp
+
+networks:
+    wp: {}

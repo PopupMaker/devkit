@@ -1,0 +1,39 @@
+---
+version: 3.8
+services:
+
+    adminer:
+        build:
+            dockerfile: ./docker/adminer/Dockerfile
+            context: . # a path to a directory containing a Dockerfile, or a url to a git repository
+        ports:
+            - 8090:8080
+        restart: always
+        depends_on:
+            - mysql
+        networks:
+            - wp
+
+    phpmemcacheadmin:
+        image: jacksoncage/phpmemcachedadmin
+        ports:
+            - "8091:80"
+        depends_on:
+            - memcached
+        networks:
+            - wp
+
+    redis-commander:
+        image: rediscommander/redis-commander:latest
+        restart: always
+        environment:
+            - REDIS_HOSTS=local:redis:6379
+        ports:
+            - "8092:8081"
+        depends_on:
+            - redis
+        networks:
+            - wp
+
+networks:
+    wp: {}
