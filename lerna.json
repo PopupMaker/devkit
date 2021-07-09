@@ -1,0 +1,13 @@
+{
+  "command": {
+    "bootstrap": {
+      "hoist": true
+    }
+  },
+  "packages": [
+    "app/core",
+    "app/extensions*"
+  ],
+  "ignoreChanges": [],
+  "version": "1.0.0"
+}
