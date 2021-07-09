@@ -1,11 +1,11 @@
 ---
-version: 3.8
+version: "3.8"
 services:
 
     # https://hub.docker.com/_/percona (mysql variant)
     mysql:
         platform: linux/x86_64
-        image: ${MYSQL_TAG}
+        image: "${MYSQL_TAG}"
         command: ${MYSQL_COMMAND}
         container_name: "${PROJECT_NAME}_mysql"
         volumes:
@@ -28,9 +28,9 @@ services:
             context: . # a path to a directory containing a Dockerfile, or a url to a git repository
             args:
                 # PHP Version is set in .env
-                WP_VERSION: ${WP_VERSION}
-                PHP_VERSION: ${PHP_VERSION}
-                PHP_SERVER: ${PHP_SERVER}
+                WP_VERSION: "${WP_VERSION}"
+                PHP_VERSION: "${PHP_VERSION}"
+                PHP_SERVER: "${PHP_SERVER}"
         container_name: "${PROJECT_NAME}_wordpress"
         environment:
             VIRTUAL_HOST: ${WP_HTTP_HOST}
