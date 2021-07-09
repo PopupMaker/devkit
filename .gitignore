@@ -1,0 +1,59 @@
+# WordPress
+wp
+public/content/upgrade
+public/content/plugins
+public/content/themes
+public/content/mu-plugins/*
+!public/content/mu-plugins/load.php
+public/content/uploads
+public/content/db.php
+public/content/object-cache.php
+
+# Languages
+public/content/languages
+!public/content/languages/plugins
+!public/content/mu-plugins/languages
+
+# Runtime files.
+/data/*
+!/data/.gitkeep
+
+
+# Logs
+/logs/*
+!/logs/.gitkeep
+*.log
+
+# Dotenv
+.env
+.env.*
+!.env.example
+
+# Compass/SASS/SCSS
+.sass-cache
+
+# Composer
+vendor
+
+# Javascript
+node_modules
+dist
+build
+
+# WP-CLI
+wp-cli.local.yml
+
+# Local development
+docker-compose.override.yml
+sassdoc
+scss-lint-report.xml
+config.codekit
+notes.md
+sql/
+
+# IDE
+.DS_Store
+.idea
+
+# Other
+debug.log
