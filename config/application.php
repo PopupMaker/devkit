@@ -44,6 +44,7 @@ $dotenv->load( $root_dir . '/.env' );
  * Default: production
  */
 define( 'WP_ENV', env( 'WP_ENV' ) ?: 'production' );
+define( 'WP_ENVIRONMENT_TYPE', WP_ENV );
 
 $env_config = __DIR__ . '/environments/' . WP_ENV . '.php';
 $custom_config = __DIR__ . '/custom.php';
