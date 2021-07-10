@@ -10,6 +10,8 @@
 		"bierner.markdown-preview-github-styles",
 		"bierner.markdown-prism",
 		"bmewburn.vscode-intelephense-client",
+		"davidanson.vscode-markdownlint",
+		"dbaeumer.vscode-eslint",
 		"devine-davies.make-hidden",
 		"eamodio.gitlens",
 		"esbenp.prettier-vscode",
