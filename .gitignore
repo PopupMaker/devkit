@@ -18,6 +18,8 @@ public/content/languages
 /data/*
 !/data/.gitkeep
 
+# Plugin Repos
+app
 
 # Logs
 /logs/*
