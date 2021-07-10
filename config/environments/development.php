@@ -11,7 +11,7 @@ declare( strict_types = 1 );
 
 define( 'SAVEQUERIES', true );
 define( 'WP_DEBUG', true );
-define( 'WP_DEBUG_LOG', true );
+define( 'WP_DEBUG_LOG', '/var/www/html/logs/debug.log' );
 define( 'SCRIPT_DEBUG', true );
 define( 'WP_DEBUG_DISPLAY', true );
 
