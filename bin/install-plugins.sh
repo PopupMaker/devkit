@@ -34,20 +34,23 @@ install_repo() {
     # install_path is ./app/extensions/$repo if $repo is not equal to "Popup-Maker"
     [ "$repo" == "Popup-Maker" ] && install_path="$base_path/core/" || install_path="$base_path/extensions/$repo"
 
+
     if [[ ! -d "$install_path" ]]; then
         echo "⏳ Installing ${label}..."
         git clone -q "$repo_url" "$install_path"
         echo "✅ ${label} installed successfully."
     else
-        git -C "${path}" fetch
-        echo "✅ ${label} already installed, updated instead."
+        echo "⏳ ${label} already installed, fetching instead."
+        git -C "${install_path}" fetch
+        echo "✅ ${label} updated successfully."
     fi
 
     symlink_path=${symlink_dir}/${path}
 
-    if [ ! -d symlink_path ]; then
-        echo "⏳ Symlinking ${label}..."
-        ln -sfr "$install_path" "$symlink_path"
+    # if $symlink_path is not a symlink, then create one
+    if [[ ! -h "$symlink_path" ]]; then
+        echo "🖇 Symlinking ${label}..."
+        ln -srf "$install_path" "$symlink_path"
     fi
 }
 
@@ -135,38 +138,28 @@ install_extension() {
     esac
 }
 
-menu() {
-    refresh_screen
-    echo "Choose extensions to install:"
-    for i in ${!options[@]}; do
-        printf "%02d) [%s] %s\n" $((i + 1)) "${extensions[i]:- }" "${options[i]}"
-    done
-    if [[ "$msg" ]]; then echo "$msg"; fi
-}
-
-prompt="Check an option (again to uncheck, ENTER when done): "
-while menu && read -rsp "$prompt" -n 2 num && [[ "$num-1" ]]; do
-    echo "${extensions[*]}"
-    if [[ $num = "" ]]; then
-        break
-    else
-        [[ "$num" != *[![:digit:]]* ]] &&
-            ((num > 0 && num <= ${#options[@]})) ||
-            {
-                msg="Invalid option: $num"
-                continue
-            }
-        [[ "${extensions[num - 1]}" ]] && extensions[num - 1]="" || extensions[num - 1]="x"
-    fi
-done
-
 refresh_screen
+
+set -e
+
+SOURCE="${BASH_SOURCE[0]}"
+while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+  DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+done
+DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
+
+source $DIR/utils/inquiry.sh
+
+checkbox_input "Choose extensions to install:" options selected_extensions
 
 # Clone core plugin.
 install_repo --label "Popup Maker Core" --repo "Popup-Maker" --path "popup-maker"
 
 # Install selected extensions.
-for i in ${!options[@]}; do
-    [[ "${extensions[i]}" ]] && { install_extension --extension "${options[i]}"; }
+for i in ${!selected_extensions[@]}; do
+    install_extension --extension "${selected_extensions[i]}";
 done
-echo "$msg"
+
+echo "😎 Successfully installed/updated all chosen extensions."
