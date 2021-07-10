@@ -7,7 +7,12 @@
 
 Notes
 
-Might have to run some of these to fix permission issues:
+Might have to run some of these to fix permission issues which need to be shared between you and the www-data user for full functionality such as installing plugins from Plugins page or writing error logs.
+
+`sudo usermod -aG www-data $USER`
+`sudo chown -R www-data:www-data ./data/uploads`
+`sudo chown -R www-data:www-data ./logs`
+`sudo chown -R www-data:www-data ./public`
 
 # Upload directory permissions
 If you have issues with the uploads directory being writable, run `sudo chown -R www-data:www-data ./data/uploads`
