@@ -5,6 +5,13 @@
 3. Run `npm run docker:up`
 4. Run `npm run install:plugins` to install Popup Maker and selected extensions.
 
+Notes
+
+Might have to run some of these to fix permission issues:
+
+# Upload directory permissions
+If you have issues with the uploads directory being writable, run `sudo chown -R www-data:www-data ./data/uploads`
+
 ## Stack
 
 The following list outlines the current stack setup via docker-compose.

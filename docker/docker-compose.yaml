@@ -46,6 +46,7 @@ services:
         restart: always
         volumes:
             - ..:/var/www/html
+            - ../data/uploads:/var/www/html/public/content/uploads
         networks:
             - wp
 
