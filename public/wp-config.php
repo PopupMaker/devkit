@@ -23,10 +23,3 @@ add_action( 'admin_enqueue_scripts', function () {
 		wp_enqueue_script( 'webpack-live-reload', 'http://localhost:35729/livereload.js', [], '0.0.0', false );
 	}
 } );
-
-/**
- * Set local error log path.
- */
-if ( defined( 'WP_DEBUG_LOG' ) && WP_DEBUG_LOG ) {
-    ini_set( 'error_log', '/var/www/html/logs/debug.log' );
-}
