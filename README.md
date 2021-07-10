@@ -4,18 +4,15 @@
 2. Run `composer make-environment` to create a new .env file. Then customize the **Stack Versions** as needed.
 3. Run `npm run docker:up`
 4. Run `npm run install:plugins` to install Popup Maker and selected extensions.
-
+5.  
 Notes
 
 Might have to run some of these to fix permission issues which need to be shared between you and the www-data user for full functionality such as installing plugins from Plugins page or writing error logs.
 
 `sudo usermod -aG www-data $USER`
-`sudo chown -R www-data:www-data ./data/uploads`
-`sudo chown -R www-data:www-data ./logs`
-`sudo chown -R www-data:www-data ./public`
-
-# Upload directory permissions
-If you have issues with the uploads directory being writable, run `sudo chown -R www-data:www-data ./data/uploads`
+`sudo chown -R :www-data ./data/uploads && sudo chmod -vR g+w ./data/uploads`
+`sudo chown -R :www-data ./logs && sudo chmod -vR g+w ./logs`
+`sudo chown -R :www-data ./public && sudo chmod -vR g+w ./public`
 
 ## Stack
 
