@@ -87,4 +87,5 @@ if [ $remove_old_wp_files = true ]; then
     sudo rm -rf ./public/wp
 fi
 
-docker-compose ${dockerComposeString} up --build -d
+docker-compose ${dockerComposeString} build --progress=plain
+docker-compose ${dockerComposeString} up -d
