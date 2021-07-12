@@ -11,7 +11,7 @@ LABEL maintainer Code Atlantic <daniel@code-atlantic.com>
 # https://stackoverflow.com/a/49654789
 ARG XDEBUG_ENABLED
 # Conditionally enable Xdebug
-RUN if [ -n "$XDEBUG_ENABLED" ]; then pecl install xdebug && docker-php-ext-enable xdebug; fi
+RUN if [ -n "$XDEBUG_ENABLED" ]; then pecl install xdebug && docker-php-ext-enable xdebug && service apache2 restart; fi
 
 # Copy Apache custom configs (including xdebug)
 COPY  ../etc/apache/vhosts.conf /etc/apache2/sites-available/000-default.conf
