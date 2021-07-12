@@ -49,14 +49,14 @@ if [ -n "${debug}" ]; then
     dockerComposeString+=" -f ./docker/docker-compose.debug.yaml"
 
     # If this is WSL environment, load additional docker configs.
-    set -e
-    if grep -qEi "(Microsoft|WSL)" /proc/version &> /dev/null ; then
-        echo "WSL Detected: Extra Configs Loaded..."
-        dockerComposeString+=" -f ./docker/docker-compose.debug-wsl2.yaml"
-        if [[ -z "${IP}" ]]; then
-            export IP=$(hostname -I)
-        fi
-    fi;
+    # set -e
+    # if grep -qEi "(Microsoft|WSL)" /proc/version &> /dev/null ; then
+    #     echo "WSL Detected: Extra Configs Loaded..."
+    #     dockerComposeString+=" -f ./docker/docker-compose.debug-wsl2.yaml"
+    #     if [[ -z "${IP}" ]]; then
+    #         export IP=$(hostname -I)
+    #     fi
+    # fi;
 fi
 
 # If wordpress has already been installed.

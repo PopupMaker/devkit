@@ -4,7 +4,7 @@ services:
 
     adminer:
         build:
-            dockerfile: ./docker/adminer/Dockerfile
+            dockerfile: ./adminer/Dockerfile
             context: . # a path to a directory containing a Dockerfile, or a url to a git repository
         ports:
             - 8090:8080
