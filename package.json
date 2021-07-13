@@ -19,7 +19,7 @@
 		"docker:purge": "bash ./bin/docker-purge.sh",
 		"docker:up": "bash ./bin/docker-up.sh",
 		"docker:update": "bash ./bin/docker-update.sh",
-		"install": "run-s install:composer install:plugins",
+		"install:all": "run-s install:composer install:plugins",
 		"install:composer": "composer update --ignore-platform-reqs",
 		"install:packages": "npx lerna bootstrap",
 		"install:plugins": "bash ./bin/install-plugins.sh",

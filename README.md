@@ -5,10 +5,10 @@
 
 This project includes a ready to go devkit for developing Popup Maker plugins, including a custom docker stack, plugin installer
 
-1. Run `npm install && composer update` to install initial dependencies. 
+1. Run `npm install && npm run install:all` to install initial dependencies. 
 2. Run `composer make-environment` to create a new .env file. Then customize the **Stack Versions** as needed.
 3. Run `npm run docker:up -- --debug` with optional `--admin`, `--debug`, or `--caching` flags, see below.
-4. Run `npm run install:plugins` to install Popup Maker and selected extensions.
+<!-- 4. Run `npm run install:plugins` to install Popup Maker and selected extensions. -->
 
 NOTES: Currently if core plugin or extension requires composer install, it needs to be done manually.
 
