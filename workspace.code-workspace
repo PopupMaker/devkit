@@ -101,6 +101,18 @@
 			"source.fixAll.tslint": true,
 			//  For Stylelint
 			"source.fixAll.stylelint": true
-		}
+		},
+		"files.exclude": {
+			"public/content/plugins/popup-maker*": true,
+			"**/.git": true,
+			"**/.svn": true,
+			"**/.hg": true,
+			"**/CVS": true,
+			"**/.DS_Store": true
+		},
+		"intelephense.files.exclude": [
+			"**/public/content/plugins/popup-maker*/**",
+			"**/public/content/plugins/pum-*/**"
+		]
 	}
 }
