@@ -2,24 +2,6 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "pwa-chrome",
-            "request": "launch",
-            "name": "Launch Chrome in Debug Mode",
-            "url": "http://localhost/",
-            // Helpful info: https://stackoverflow.com/questions/51509444/how-to-setup-vs-code-debugging-in-windows-when-running-wsl
-            "webRoot": "${workspaceFolder}",
-            "pathMapping": {
-                "/": "${workspaceFolder}/public",
-                "/content/plugins/popup-maker-popup-analytics": "${workspaceFolder}/app/extensions/Analytics",
-                "/wp-includes": "${workspaceFolder}/public/wp/wp-includes"
-            },
-            "sourceMaps": true,
-            "sourceMapPathOverrides": {
-                "webpack://pum/analytics/./*": "${workspaceFolder}/app/extensions/Analytics/*",
-                "webpack://wp.[name]/*": "${workspaceFolder}/public/wp/*",
-            }
-        },
-        {
             "name": "Listen for XDebug",
             "type": "php",
             "request": "launch",
@@ -38,6 +20,24 @@
                 "max_data": 1024,
                 "max_depth": 3,
                 "show_hidden": 1
+            }
+        },
+        {
+            "type": "pwa-chrome",
+            "request": "launch",
+            "name": "Launch Chrome in Debug Mode",
+            "url": "http://localhost/",
+            // Helpful info: https://stackoverflow.com/questions/51509444/how-to-setup-vs-code-debugging-in-windows-when-running-wsl
+            "webRoot": "${workspaceFolder}",
+            "pathMapping": {
+                "/": "${workspaceFolder}/public",
+                "/content/plugins/popup-maker-popup-analytics": "${workspaceFolder}/app/extensions/Analytics",
+                "/wp-includes": "${workspaceFolder}/public/wp/wp-includes"
+            },
+            "sourceMaps": true,
+            "sourceMapPathOverrides": {
+                "webpack://pum/analytics/./*": "${workspaceFolder}/app/extensions/Analytics/*",
+                "webpack://wp.[name]/*": "${workspaceFolder}/public/wp/*",
             }
         },
         {
