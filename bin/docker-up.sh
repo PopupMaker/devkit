@@ -1,6 +1,7 @@
 #!/bin/bash
 
-. .env
+# Used to get WP_VERSION env variable for use in comparison.
+source .env
 
 ############################################################
 # Help                                                     #
@@ -87,5 +88,5 @@ if [ $remove_old_wp_files = true ]; then
     sudo rm -rf ./public/wp
 fi
 
-docker-compose ${dockerComposeString} build --progress=plain
-docker-compose ${dockerComposeString} up -d
+eval $(egrep -v '^#' .env | xargs) docker-compose ${dockerComposeString} build --progress=plain
+eval $(egrep -v '^#' .env | xargs) docker-compose ${dockerComposeString} up -d
