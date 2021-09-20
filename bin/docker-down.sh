@@ -7,4 +7,4 @@ dockerComposeString+=" -f ./docker/docker-compose.caching.yaml"
 dockerComposeString+=" -f ./docker/docker-compose.debug.yaml"
 # dockerComposeString+=" -f ./docker/docker-compose.debug-wsl2.yaml"
 
-docker-compose ${dockerComposeString} down
+docker-compose ${dockerComposeString} --env-file=./.env down
