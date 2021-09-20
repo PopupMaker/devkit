@@ -9,7 +9,7 @@ services:
         command: ${MYSQL_COMMAND}
         container_name: "${PROJECT_NAME}_mysql"
         volumes:
-            - ${PROJECT_NAME}_data:/var/lib/mysql
+            - wp_data:/var/lib/mysql"
         ports:
             - ${MYSQL_PORT}:3306
         environment:
@@ -53,7 +53,7 @@ services:
 # Top building block that defines
 # All volumes used for this service
 volumes:
-    ${PROJECT_NAME}_data: {}
+    wp_data: {}
 
 networks:
     wp: {}
