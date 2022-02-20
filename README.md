@@ -5,7 +5,7 @@
 
 This project includes a ready to go devkit for developing Popup Maker plugins, including a custom docker stack, plugin installer
 
-1. Run `npm install && npm run install:all` to install initial dependencies. 
+1. Run `npm install && npm run install:all` to install initial dependencies.
 2. Run `composer make-environment` to create a new .env file. Then customize the **Stack Versions** as needed.
 3. Run `npm run docker:up -- --debug` with optional `--admin`, `--debug`, or `--caching` flags, see below.
 <!-- 4. Run `npm run install:plugins` to install Popup Maker and selected extensions. -->
@@ -29,7 +29,19 @@ Options must be passed after a `--` flag.
 - `npm run install:packages` Install all npm packages for core & each extension.
 - `npm run lerna:start` Run npm start for all core & extensions.
 
-## Permission Fixes
+## Docker Troubleshooting
+
+### Up issues
+
+Sometimes the daemon isn't accessible due to your user not being root: https://stackoverflow.com/questions/48957195/how-to-fix-docker-got-permission-denied-issue
+
+The following commands should resolve it.
+
+- `sudo groupadd docker`
+- `sudo usermod -aG docker $USER`
+- `newgrp docker`
+
+### Folder Write Permission Fixes
 
 Might have to run some of these to fix permission issues which need to be shared between you and the www-data user for full functionality such as installing plugins from Plugins page or writing error logs.
 
