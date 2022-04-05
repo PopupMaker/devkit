@@ -16,4 +16,4 @@ RUN cp -a /home/adminer/adminer-theme/lib/. /var/www/html
 # RUN cp /home/adminer/hydra-theme/adminer.css /var/www/html/
 
 # Copy PHP config files to /usr/local/etc/php/conf.d/
-COPY ./docker/etc/adminer/.  /var/www/html/
+COPY ./etc/adminer/.  /var/www/html/
