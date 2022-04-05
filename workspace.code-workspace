@@ -80,8 +80,8 @@
 			"xsl",
 			"Zend OPcache",
 			"zip",
-			"zlib",
-			"wordpress"
+			"zlib"
+			// "wordpress"
 		],
 		"eslint.workingDirectories": [ { "mode": "auto" } ],
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -101,6 +101,18 @@
 			"source.fixAll.tslint": true,
 			//  For Stylelint
 			"source.fixAll.stylelint": true
-		}
+		},
+		"files.exclude": {
+			"**/.git": true,
+			"**/.svn": true,
+			"**/.hg": true,
+			"**/CVS": true,
+			"**/.DS_Store": true,
+			"public/content/plugins/popup-maker*": true
+		},
+		"intelephense.files.exclude": [
+			"**/public/content/plugins/popup-maker*/**",
+			"**/public/content/plugins/pum-*/**"
+		]
 	}
 }
