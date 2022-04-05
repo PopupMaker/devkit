@@ -1,6 +1,10 @@
 #!/bin/bash
 
-. .env
+# Local .env
+if [ -f .env ]; then
+    # Load Environment Variables
+    export $(cat .env | grep -v '#' | sed 's/\r$//' | awk '/=/ {print $1}' )
+fi
 
 ############################################################
 # Help                                                     #
@@ -76,7 +80,7 @@ if [ -d "./public/wp" ]; then
         echo "Volume version : "$VOLUME_VERSION
         echo "WordPress version : "$TARGET_VERSION
 
-        if [ $VOLUME_VERSION != $TARGET_VERSION ]; then
+        if [ "$VOLUME_VERSION" != "$TARGET_VERSION" ]; then
             remove_old_wp_files=true
         fi
     fi
