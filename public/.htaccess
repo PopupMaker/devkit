@@ -5,7 +5,6 @@ RewriteEngine On
 RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
 RewriteBase /
 RewriteRule ^index\.php$ - [L]
-RewriteRule ^wp-content/(.*)$ /content/$1 [R=302,NC,L]
 RewriteRule ^([_0-9a-zA-Z-]+/)?wp-admin$ $1wp-admin/ [R=301,L]
 RewriteRule ^/(wp-.*.php)$ "wp/$1" [L]
 RewriteRule ^/(wp-(admin|includes).*) wp/$1 [L]

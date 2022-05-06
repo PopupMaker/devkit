@@ -1,15 +1,7 @@
 {
-	"cSpell.words": [
-		"devkit",
-		"popupmaker"
-	],
-	"git.ignoredRepositories": [
-		"."
-	],
-	"git.scanRepositories": [
-		"./app/core/*",
-		"./app/extensions/**"
-	],
+	"cSpell.words": [ "devkit", "popupmaker" ],
+	"git.ignoredRepositories": [ "." ],
+	"git.scanRepositories": [ "./app/core/*", "./app/extensions/**" ],
 	"intelephense.format.enable": false,
 	"intelephense.stubs": [
 		"apache",
@@ -85,11 +77,7 @@
 		"zlib",
 		"wordpress"
 	],
-	"eslint.workingDirectories": [
-		{
-			"mode": "auto"
-		}
-	],
+	"eslint.workingDirectories": [ { "mode": "auto" } ],
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"[javascript]": {
 		"editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -107,11 +95,5 @@
 		"source.fixAll.tslint": true,
 		//  For Stylelint
 		"source.fixAll.stylelint": true
-	},
-	"todo-tree.regex.regex": "(//|#|<!--|;|/?\\*|^)\\s*($TAGS)",
-	"todo-tree.general.tags": [
-		"@todo",
-		"TODO",
-		"FIXME"
-	]
+	}
 }

@@ -1,7 +1,10 @@
 #!/bin/bash
 
-# Used to get WP_VERSION env variable for use in comparison.
-source .env
+# Local .env
+if [ -f .env ]; then
+    # Load Environment Variables
+    export $(cat .env | grep -v '#' | sed 's/\r$//' | awk '/=/ {print $1}' )
+fi
 
 ############################################################
 # Help                                                     #
