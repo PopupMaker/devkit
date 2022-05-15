@@ -14,9 +14,9 @@ ARG XDEBUG_ENABLED
 RUN if [ -n "$XDEBUG_ENABLED" ]; then pecl install xdebug && docker-php-ext-enable xdebug && service apache2 restart; fi
 
 # Copy Apache custom configs (including xdebug)
-COPY  ../etc/apache/vhosts.conf /etc/apache2/sites-available/000-default.conf
+COPY  ./etc/apache/vhosts.conf /etc/apache2/sites-available/000-default.conf
 
 # Copy PHP custom configs (including xdebug)
-COPY ../etc/php/custom.ini /usr/local/etc/php/conf.d/
+COPY ./etc/php/custom.ini /usr/local/etc/php/conf.d/
 
 VOLUME /var/www/html/
