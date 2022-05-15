@@ -7,7 +7,7 @@
 	"settings": {
 		"cSpell.words": [ "devkit", "popupmaker" ],
 		"git.ignoredRepositories": [ "." ],
-		"git.scanRepositories": [ "./app/core/*", "./app/extensions/**" ],
+		"git.scanRepositories": [ "./app/**" ],
 		"intelephense.format.enable": false,
 		"intelephense.stubs": [
 			"apache",
