@@ -78,7 +78,7 @@ Versions are mostly controlled in the .env file.
 ### Debug Tools
 
 - XDebug: On port 9000 using host.docker.internal by default.
-- Mailcatcher: [http://localhost:1080](http://localhost:1080)
+- Mailcatcher: [http://localhost:10800](http://localhost:10800)
 
 ## WSL 2
 
