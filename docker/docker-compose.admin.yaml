@@ -3,11 +3,12 @@ version: "3.8"
 services:
 
     adminer:
+        container_name: ${PROJECT_NAME:-wordpress}_adminer
         build:
             dockerfile: ./adminer/Dockerfile
             context: . # a path to a directory containing a Dockerfile, or a url to a git repository
         ports:
-            - 8090:8080
+            - "8090:8080"
         restart: always
         depends_on:
             - mysql
@@ -15,6 +16,7 @@ services:
             - wp
 
     phpmemcacheadmin:
+        container_name: ${PROJECT_NAME:-wordpress}_phpmemcachedadmin
         image: jacksoncage/phpmemcachedadmin
         ports:
             - "8091:80"
@@ -24,6 +26,7 @@ services:
             - wp
 
     redis-commander:
+        container_name: ${PROJECT_NAME:-wordpress}_rediscommander
         image: rediscommander/redis-commander:latest
         restart: always
         environment:

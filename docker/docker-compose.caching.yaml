@@ -2,10 +2,12 @@
 version: "3.8"
 services:
     memcached:
+        container_name: ${PROJECT_NAME:-wordpress}_memcached
         image: memcached:latest
         networks:
             - wp
     redis:
+        container_name: ${PROJECT_NAME:-wordpress}_redis
         image: redis:latest
         volumes:
             - redis_data:/data
