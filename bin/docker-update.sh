@@ -1,7 +1,9 @@
 #!/bin/bash
 
 # Local .env
+envString=""
 if [ -f .env ]; then
+    envString+="--env-file ./.env"
     # Load Environment Variables
     export $(cat .env | grep -v '#' | sed 's/\r$//' | awk '/=/ {print $1}' )
 fi
@@ -91,6 +93,6 @@ if [ $remove_old_wp_files = true ]; then
     sudo rm -rf ./public/wp
 fi
 
-docker-compose ${dockerComposeString} rm wordpress
-docker-compose ${dockerComposeString} build wordpress --pull --no-cache --progress=plain
-docker-compose ${dockerComposeString} up wordpress -d
+docker-compose ${envString} ${dockerComposeString} rm wordpress
+docker-compose ${envString} ${dockerComposeString} build wordpress --pull --no-cache --progress=plain
+docker-compose ${envString} ${dockerComposeString} up wordpress -d

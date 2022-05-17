@@ -1,9 +1,13 @@
 #!/bin/bash
 
 # Local .env
+envString=""
 if [ -f .env ]; then
+    envString+="--env-file ./.env"
     # Load Environment Variables
     export $(cat .env | grep -v '#' | sed 's/\r$//' | awk '/=/ {print $1}' )
+
+    echo "Import ENV Vars."
 fi
 
 ############################################################
@@ -91,5 +95,5 @@ if [ $remove_old_wp_files = true ]; then
     sudo rm -rf ./public/wp
 fi
 
-docker-compose ${dockerComposeString} --env-file=./.env build --progress=plain
-docker-compose ${dockerComposeString} --env-file=./.env  up -d
+docker-compose ${envString} ${dockerComposeString} build --progress=plain
+docker-compose ${envString} ${dockerComposeString} up -d

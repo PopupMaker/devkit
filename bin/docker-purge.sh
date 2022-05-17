@@ -1,7 +1,9 @@
 #!/bin/bash
 
 # Local .env
+envString=""
 if [ -f .env ]; then
+    envString+="--env-file ./.env"
     # Load Environment Variables
     export $(cat .env | grep -v '#' | sed 's/\r$//' | awk '/=/ {print $1}' )
 fi
@@ -13,7 +15,7 @@ dockerComposeString+=" -f ./docker/docker-compose.caching.yaml"
 dockerComposeString+=" -f ./docker/docker-compose.debug.yaml"
 # dockerComposeString+=" -f ./docker/docker-compose.debug-wsl2.yaml"
 
-docker-compose ${dockerComposeString} down --remove-orphans --rmi local --volumes
+docker-compose ${envString} ${dockerComposeString} down --remove-orphans --rmi local --volumes
 
 # If wordpress has already been installed purge its files.
 if [ -d "./public/wp" ]; then
