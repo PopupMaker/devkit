@@ -70,16 +70,18 @@ fi
 # If wordpress has already been installed.
 remove_old_wp_files=false
 if [ -d "./public/wp" ]; then
-
     if [ -f "./public/wp/wp-includes/version.php" ]; then
-
         VOLUME_VERSION="$(php -r 'require('"'"'./public/wp/wp-includes/version.php'"'"'); echo $wp_version;')"
 
         # remove beta- or -alpha prefix and -RC[0-9] suffix.
         VOLUME_VERSION=${VOLUME_VERSION#beta-}
-        VOLUME_VERSION=${VOLUME_VERSION%-*}
         TARGET_VERSION=${WP_VERSION#beta-}
+        VOLUME_VERSION=${VOLUME_VERSION%-*}
         TARGET_VERSION=${TARGET_VERSION%-*}
+
+        # strip quotes
+        VOLUME_VERSION="${VOLUME_VERSION//\'}"
+        TARGET_VERSION="${TARGET_VERSION//\'}"
 
         echo "Volume version : "$VOLUME_VERSION
         echo "WordPress version : "$TARGET_VERSION
@@ -96,4 +98,4 @@ if [ $remove_old_wp_files = true ]; then
 fi
 
 docker-compose ${envString} ${dockerComposeString} build --progress=plain
-docker-compose ${envString} ${dockerComposeString} up -d
+docker-compose ${envString} ${dockerComposeString} up -d --remove-orphans

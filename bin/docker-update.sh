@@ -79,6 +79,9 @@ if [ -d "./public/wp" ]; then
         TARGET_VERSION=${WP_VERSION#beta-}
         TARGET_VERSION=${TARGET_VERSION%-*}
 
+        VOLUME_VERSION="${VOLUME_VERSION//\'}"
+        TARGET_VERSION="${TARGET_VERSION//\'}"
+
         echo "Volume version : "$VOLUME_VERSION
         echo "WordPress version : "$TARGET_VERSION
 
