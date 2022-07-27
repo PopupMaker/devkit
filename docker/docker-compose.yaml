@@ -42,7 +42,7 @@ services:
         ports:
             - "${WP_HTTP_PORT:-80}:80"
         expose:
-            - "${WP_HTTP_PORT:-80}"
+            - ${WP_HTTP_PORT:-80}
         depends_on:
             - mysql
         restart: always

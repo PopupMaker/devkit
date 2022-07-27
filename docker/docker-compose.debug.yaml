@@ -5,6 +5,9 @@ services:
         build:
             args:
                 XDEBUG_ENABLED: 1
+        expose:
+            - ${WP_HTTP_PORT:-80}
+            - 9000
         environment:
             # Set the XDEBUG_CONFIG as described here: https://xdebug.org/docs/remote
             # Uses client_host for v3, and remote_host for v2 depending on PHP version.

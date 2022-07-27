@@ -3,7 +3,7 @@ ARG WP_VERSION
 ARG PHP_VERSION=8.0
 ARG PHP_SERVER=apache
 
-FROM wordpress:${WP_VERSION:+$WP_VERSION-}${PHP_VERSION:+php$PHP_VERSION}${PHP_SERVER:+-$PHP_SERVER}
+FROM wordpress:${WP_VERSION:+$WP_VERSION}${PHP_VERSION:+php$PHP_VERSION}${PHP_SERVER:+-$PHP_SERVER}
 
 LABEL maintainer Code Atlantic <daniel@code-atlantic.com>
 
